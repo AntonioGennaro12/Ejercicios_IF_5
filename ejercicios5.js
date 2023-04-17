@@ -10,10 +10,13 @@ Si paga por feriaCoin se informa el monto total a pagar.
 Parte #4 se pide agregar el Costo 
 del tiempo del paseo y paseo extendido también. 
 El tiempo de paseo es 45 minutos o más tiene un recargo del 50% 
-
+Parte 5 se pide poder pasear hasta 2 perros y 2 gatos simultáneo
+El costo de pasear gatos es 70% más caro que pasear perros.
 */
 
-const CANT_MAX_MASCOTAS   =   3;
+const CANT_MAX_MASCOTAS   =   4;
+const CANT_MAX_PERROS     =   2;
+const CANT_MAX_GATOS      =   2;
 const PASEO_MINIMO_MIN    =  30;
 const PASEO_MAXIMO_MIN    =  60;
 const PASEO_EXTENDIDO     =  45;
@@ -24,7 +27,7 @@ const FACTOR_PASEO_EXTEND = 1.5;
 let cantPerros  = prompt("Cuantos Perros desea que paseemos? El precio del paseo es de $"+PRECIO_PASEO_PERRO+".-");
 let cantGatos   = prompt("Cuantos Gatos desea que paseemos? El precio del paseo es de $"+PRECIO_PASEO_GATO+".-");
 let tiempoPaseo = prompt("Ingrese la duración del paseo que desea (en minutos)");
-let pagoFeriaCoin = prompt("Desea pagar por feriaCoin? Si o No (si es No, ingrese 'no'");
+let pagoFeriaCoin = prompt("Desea pagar por feriaCoin? Si o No (si e s No, ingrese 'no'");
 
 /* Mejora para prevenir errores por no ingresar un número o presinar Enter*/
 /* sin embargo todavía puede se rmejorado*/
@@ -35,11 +38,12 @@ pagoFeriaCoin = pagoFeriaCoin.toUpperCase();
 
 if((tiempoPaseo >= PASEO_MINIMO_MIN) && (tiempoPaseo <= PASEO_MAXIMO_MIN)) {
     if ((cantPerros + cantGatos) == 0) {
-        document.write("Paseamos Perros ó Gatos, hasta "+
-            CANT_MAX_MASCOTAS+ ".- de ellos por cliente. Muchas gracias por su consulta!");
+        document.write("Paseamos Perros y Gatos hasta " +CANT_MAX_MASCOTAS+
+        " de ellos y hasta " +PASEO_MAXIMO_MIN+ " minutos. Muchas gracias por su consulta!");
         }
-    else if (((cantPerros + cantGatos) <= CANT_MAX_MASCOTAS) && 
-                ((cantPerros == 0)||(cantGatos == 0))) {
+        else if (((cantPerros + cantGatos) <= CANT_MAX_MASCOTAS) && 
+        ((cantPerros <= CANT_MAX_PERROS)&&(cantGatos<=CANT_MAX_GATOS)))
+         {
         document.write("Con gusto pasearemos sus Mascotas: ");
         if (cantPerros > 0) {document.write (cantPerros+ ".- Perro/s ")};
         if (cantGatos  > 0) {document.write (cantGatos+ ".- Gato/s ")};
@@ -53,8 +57,8 @@ if((tiempoPaseo >= PASEO_MINIMO_MIN) && (tiempoPaseo <= PASEO_MAXIMO_MIN)) {
       
         }
     else{ 
-        document.write("Lo sentimos sólo podemos pasear hasta "+CANT_MAX_MASCOTAS+
-         ".- perros ó gatos por cliente, en forma exclusiva.")
+        document.write("Lo sentimos sólo podemos pasear hasta "+CANT_MAX_MASCOTAS+".- Mascotas por cliente, hasta " +
+        CANT_MAX_PERROS+ ".- perros y hasta " +CANT_MAX_GATOS+ ".- gatos.")
     } 
 }
 else {
