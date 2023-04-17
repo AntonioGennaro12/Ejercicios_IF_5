@@ -19,12 +19,14 @@ const PRECIO_PASEO_GATO   = 680;
 let cantPerros  = prompt("Cuantos Perros desea que paseemos? El precio del paseo es de $"+PRECIO_PASEO_PERRO+".-");
 let cantGatos   = prompt("Cuantos Gatos desea que paseemos? El precio del paseo es de $"+PRECIO_PASEO_GATO+".-");
 let tiempoPaseo = prompt("Ingrese la duración del paseo que desea (en minutos)");
+let pagoFeriaCoin = prompt("Desea pagar por feriaCoin? Si o No (si es No, ingrese 'no'");
 
 /* Mejora para prevenir errores por no ingresar un número o presinar Enter*/
 /* sin embargo todavía puede se rmejorado*/
 if (cantPerros.trim()   != "") {cantPerros   = parseInt(cantPerros)}   else {cantPerros = 0};
 if (cantGatos.trim()    != "") {cantGatos    = parseInt(cantGatos)}    else {cantGatos = 0};
 if (tiempoPaseo.trim()  != "") {tiempoPaseo  = parseInt(tiempoPaseo)}  else {tiempoPaseo = 0};
+pagoFeriaCoin = pagoFeriaCoin.toUpperCase();
 
 if((tiempoPaseo >= PASEO_MINIMO_MIN) && (tiempoPaseo <= PASEO_MAXIMO_MIN)) {
     if ((cantPerros + cantGatos) == 0) {
@@ -38,11 +40,13 @@ if((tiempoPaseo >= PASEO_MINIMO_MIN) && (tiempoPaseo <= PASEO_MAXIMO_MIN)) {
         if (cantGatos  > 0) {document.write (cantGatos+ ".- Gato/s ")};
         document.write(", por un tiempo de "+tiempoPaseo+"minutos. ");
         document.write ("El precio total es de: $ " + 
-            (((cantPerros*PRECIO_PASEO_PERRO)+(cantGatos*PRECIO_PASEO_GATO))*1)+".-");        }
+            (((cantPerros*PRECIO_PASEO_PERRO)+(cantGatos*PRECIO_PASEO_GATO))*1)+".-"); 
+        if (pagoFeriaCoin != "NO") {document.write ("El pago sera realizado mediante feriaCoin. Muchas gracias por su compra.")}
+        }
     else{ 
         document.write("Lo sentimos sólo podemos pasear hasta "+CANT_MAX_MASCOTAS+
          ".- perros ó gatos por cliente, en forma exclusiva.")
-    }; 
+    } 
 }
 else {
     document.write("Lo sentimos sólo hacemos paseos por un mínimo de "+PASEO_MINIMO_MIN+
