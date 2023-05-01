@@ -27,7 +27,7 @@ const FACTOR_PASEO_EXTEND = 1.5;
 let cantPerros  = prompt("Cuantos Perros desea que paseemos? El precio del paseo es de $"+PRECIO_PASEO_PERRO+".-");
 let cantGatos   = prompt("Cuantos Gatos desea que paseemos? El precio del paseo es de $"+PRECIO_PASEO_GATO+".-");
 let tiempoPaseo = prompt("Ingrese la duración del paseo que desea (en minutos)");
-let pagoFeriaCoin = prompt("Desea pagar por feriaCoin? Si o No (si e s No, ingrese 'no'");
+let pagoFeriaCoin = prompt("Desea pagar por feriaCoin? Si o No (si es No, ingrese 'no'");
 
 /* Mejora para prevenir errores por no ingresar un número o presinar Enter*/
 /* sin embargo todavía puede se rmejorado*/
